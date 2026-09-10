@@ -1,0 +1,7 @@
+{
+  "name": "adote-um-pet-mobile",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular-standalone"
+}
