@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { EntidadeAcolhedora } from '../models/entidade-acolhedora.model';
 import {
   IonHeader, 
@@ -13,6 +13,7 @@ import {
   IonCardSubtitle,
   IonCardTitle,
 } from '@ionic/angular'
+import { EntidadeAcolhedoraService } from '../services/entidade-acolhedora-service';
 
 @Component({
   selector: 'app-tab2',
@@ -31,14 +32,15 @@ import {
     IonItem,
     IonList,]
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit{
+
+  entidadeService = inject(EntidadeAcolhedoraService)
   entidades: EntidadeAcolhedora[] = [];
 
-  constructor() {
-    this.entidades.push({
-      nome: "Canil Animacao Ltda",
-      cnpj: "123456789021234"
-    });
+  constructor() { }
+  
+  ngOnInit(): void {
+    this.entidades = this.entidadeService.listarEntidades();
   }
 
 }
